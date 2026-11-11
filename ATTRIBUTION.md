@@ -100,7 +100,7 @@ Avant d’intégrer une suggestion issue d’un outil d’IA au dépôt, l’éq
 - **Adresse :** `zayd.benfadhel@supcom.tn`
 - **Date prévue :** 11/11/2026
 - **Engagement personnel :** ☑ Je souscris à la déclaration ci-dessus.
-- **Signature électronique nominative déclarée :** `BEN FADHEL Zayed `
+- **Signature électronique nominative déclarée :** `BEN FADHEL Zayd `
 - **Commit de validation (identifiant facultatif) :** `____________________________`
 
 ### 4.3 EZZINE Montassar
