@@ -11,6 +11,8 @@ permissions:
   contents: read
 
 jobs:
+
+  # JOB 1 : Compilation et tests JUnit
   build-and-test:
     name: Java 25 - Maven - JUnit
     runs-on: ubuntu-latest
@@ -38,3 +40,19 @@ jobs:
 
       - name: Compile and run tests
         run: mvn --batch-mode --no-transfer-progress clean test
+
+  # JOB 2 : Detection des secrets avec Gitleaks
+  gitleaks:
+    name: Security - Gitleaks
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Scan secrets with Gitleaks
+        uses: gitleaks/gitleaks-action@v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
