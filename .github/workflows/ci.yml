@@ -1,0 +1,40 @@
+
+name: EduSecure CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-test:
+    name: Java 25 - Maven - JUnit
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: backend
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Java 25
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '25'
+          cache: maven
+          cache-dependency-path: 'backend/**/pom.xml'
+
+      - name: Verify environment
+        run: |
+          java -version
+          mvn -version
+
+      - name: Compile and run tests
+        run: mvn --batch-mode --no-transfer-progress clean test
