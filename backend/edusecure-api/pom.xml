@@ -14,6 +14,26 @@
     <artifactId>edusecure-api</artifactId>
     <packaging>war</packaging>
 
-    <name>EduSecure - edusecure-api</name>
+    <name>EduSecure - API Jakarta EE 11</name>
+
+    <dependencies>
+
+        <!-- API Jakarta EE 11 fournie par WildFly -->
+        <dependency>
+            <groupId>jakarta.platform</groupId>
+            <artifactId>jakarta.jakartaee-web-api</artifactId>
+            <version>11.0.0</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Tests unitaires JUnit 5 -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
 
 </project>
