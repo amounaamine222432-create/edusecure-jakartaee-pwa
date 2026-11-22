@@ -9,3 +9,6 @@ node_modules/
 .idea/
 .vscode/
 *.log
+
+# Artefacts telecharges depuis GitHub Actions
+/deployment/artifacts/
