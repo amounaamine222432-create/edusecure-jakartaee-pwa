@@ -12,10 +12,15 @@ permissions:
 
 jobs:
 
-  # JOB 1 : Compilation et tests JUnit
+  # JOB 1 : Compilation, tests et attestation du WAR
   build-and-test:
-    name: Java 25 - Maven - JUnit
+    name: Java 25 - Maven - JUnit - WAR
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      id-token: write
+      attestations: write
 
     defaults:
       run:
@@ -40,6 +45,7 @@ jobs:
 
       - name: Build and run tests
         run: mvn --batch-mode --no-transfer-progress clean verify
+
       - name: Attest API WAR provenance
         if: github.event_name == 'push'
         uses: actions/attest@v4
@@ -62,17 +68,13 @@ jobs:
           if-no-files-found: error
           retention-days: 7
 
-  # JOB 2 : Detection des secrets avec Gitleaks
-   gitleaks:
+  # JOB 2 : Detection des secrets
+  gitleaks:
     name: Security - Gitleaks
     runs-on: ubuntu-latest
 
     permissions:
       contents: read
-    permissions:
-      contents: read
-      id-token: write
-      attestations: write
 
     steps:
       - name: Checkout repository
