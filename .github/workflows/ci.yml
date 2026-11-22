@@ -38,8 +38,24 @@ jobs:
           java -version
           mvn -version
 
-      - name: Compile and run tests
-        run: mvn --batch-mode --no-transfer-progress clean test
+            - name: Build and run tests
+        run: mvn --batch-mode --no-transfer-progress clean verify
+
+      - name: Upload API WAR
+        uses: actions/upload-artifact@v4
+        with:
+          name: edusecure-api-war
+          path: backend/edusecure-api/target/*.war
+          if-no-files-found: error
+          retention-days: 7
+
+      - name: Upload PWA files
+        uses: actions/upload-artifact@v4
+        with:
+          name: edusecure-pwa
+          path: frontend/pwa/
+          if-no-files-found: error
+          retention-days: 7
 
   # JOB 2 : Detection des secrets avec Gitleaks
   gitleaks:
