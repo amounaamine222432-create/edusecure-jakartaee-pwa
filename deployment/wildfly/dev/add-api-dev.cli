@@ -1,0 +1,14 @@
+# EduSecure - API Virtual Host - DEV
+# Adaptation simplifiee du script add-api.cli du professeur
+
+if (outcome != success) of /subsystem=undertow/server=default-server/host=edusecure-api-host:read-resource
+    /subsystem=undertow/server=default-server/host=edusecure-api-host:add(alias=["api.edusecure.local"],default-web-module="edusecure-api-1.0.0-SNAPSHOT.war")
+end-if
+
+if (outcome != success) of /subsystem=undertow/server=default-server/host=edusecure-api-host/setting=access-log:read-resource
+    /subsystem=undertow/server=default-server/host=edusecure-api-host/setting=access-log:add(pattern="combined",prefix="edusecure-api")
+end-if
+
+if (outcome != success) of /subsystem=undertow/server=default-server/host=edusecure-api-host/filter-ref=edusecure-nosniff:read-resource
+    /subsystem=undertow/server=default-server/host=edusecure-api-host/filter-ref=edusecure-nosniff:add
+end-if

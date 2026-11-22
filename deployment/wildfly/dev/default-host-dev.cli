@@ -1,0 +1,11 @@
+# EduSecure - WildFly DEV
+# Configuration initiale de default-host
+# Sans redirection HTTPS ni HSTS
+
+if (outcome != success) of /subsystem=undertow/configuration=filter/response-header=edusecure-nosniff:read-resource
+    /subsystem=undertow/configuration=filter/response-header=edusecure-nosniff:add(header-name=X-Content-Type-Options,header-value=nosniff)
+end-if
+
+if (outcome != success) of /subsystem=undertow/server=default-server/host=default-host/filter-ref=edusecure-nosniff:read-resource
+    /subsystem=undertow/server=default-server/host=default-host/filter-ref=edusecure-nosniff:add
+end-if

@@ -1,0 +1,22 @@
+# EduSecure - PWA Virtual Host - DEV
+# Adaptation du script add-host.cli du professeur
+
+# Creer le gestionnaire de fichiers statiques
+if (outcome != success) of /subsystem=undertow/configuration=handler/file=edusecure-content:read-resource
+    /subsystem=undertow/configuration=handler/file=edusecure-content:add(path="C:/edusecure/pwa")
+end-if
+
+# Creer l'hote virtuel PWA
+if (outcome != success) of /subsystem=undertow/server=default-server/host=edusecure-host:read-resource
+    /subsystem=undertow/server=default-server/host=edusecure-host:add(alias=["app.edusecure.local"])
+end-if
+
+# Associer la racine de l'hote au dossier PWA
+if (outcome != success) of /subsystem=undertow/server=default-server/host=edusecure-host/location=\/:read-resource
+    /subsystem=undertow/server=default-server/host=edusecure-host/location=\/:add(handler=edusecure-content)
+end-if
+
+# Appliquer le filtre de securite HTTP
+if (outcome != success) of /subsystem=undertow/server=default-server/host=edusecure-host/filter-ref=edusecure-nosniff:read-resource
+    /subsystem=undertow/server=default-server/host=edusecure-host/filter-ref=edusecure-nosniff:add
+end-if

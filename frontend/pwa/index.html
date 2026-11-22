@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>EduSecure</title>
+
+    <!-- Configuration PWA -->
+<link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#17365d">
+    <link rel="icon" type="image/png" href="/icons/icon-192.png">
+</head>
+<body>
+    <h1>EduSecure</h1>
+    <p>Plateforme sécurisée de gestion des documents pédagogiques.</p>
+    <p>Jakarta EE 11 — WildFly 42 — Java 25</p>
+    <p>Interface PWA en cours de développement.</p>
+<script>
+    if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+            navigator.serviceWorker.register("/service-worker.js")
+                .then((registration) => {
+                    console.log(
+                        "EduSecure Service Worker enregistré :",
+                        registration.scope
+                    );
+                })
+                .catch((error) => {
+                    console.error(
+                        "Erreur Service Worker EduSecure :",
+                        error
+                    );
+                });
+        });
+    }
+</script>
+</body>
+</html>

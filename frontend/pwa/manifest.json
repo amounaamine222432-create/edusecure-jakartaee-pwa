@@ -1,0 +1,26 @@
+{
+  "id": "/",
+  "name": "EduSecure - Plateforme sécurisée de documents pédagogiques",
+  "short_name": "EduSecure",
+  "description": "Application sécurisée de gestion et de vérification des documents pédagogiques.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#17365d",
+  "lang": "fr",
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
