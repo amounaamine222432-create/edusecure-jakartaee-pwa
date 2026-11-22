@@ -38,7 +38,7 @@ jobs:
           java -version
           mvn -version
 
-       - name: Build and run tests
+      - name: Build and run tests
         run: mvn --batch-mode --no-transfer-progress clean verify
 
       - name: Upload API WAR
