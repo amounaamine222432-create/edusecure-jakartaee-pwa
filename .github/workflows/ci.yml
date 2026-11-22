@@ -40,6 +40,11 @@ jobs:
 
       - name: Build and run tests
         run: mvn --batch-mode --no-transfer-progress clean verify
+      - name: Attest API WAR provenance
+        if: github.event_name == 'push'
+        uses: actions/attest@v4
+        with:
+          subject-path: backend/edusecure-api/target/*.war
 
       - name: Upload API WAR
         uses: actions/upload-artifact@v4
@@ -61,6 +66,10 @@ jobs:
   gitleaks:
     name: Security - Gitleaks
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+      attestations: write
 
     steps:
       - name: Checkout repository
