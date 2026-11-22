@@ -1050,3 +1050,22 @@ Le projet sera réalisé progressivement selon les étapes suivantes.
 
 \*\*EduSecure — Sécuriser, personnaliser et tracer la distribution des documents pédagogiques.\*\*
 
+
+---
+
+## Etat technique actuel - Novembre 2026
+
+Une premiere infrastructure EduSecure est implementee et testee :
+
+- API REST Jakarta EE 11 et validation des documents par SHA-256.
+- PWA avec manifeste, Service Worker et script externe.
+- Deploiement local sur WildFly 42 avec Java 25.
+- HTTPS TLS 1.3, certificat DEV et secrets Elytron.
+- En-tetes de securite CSP, HSTS, Referrer-Policy et nosniff.
+- Pipeline CI/CD GitHub Actions avec controles de securite.
+- Sauvegarde et rollback DEV en cas de deploiement defaillant.
+- 13 tests Maven reussis.
+
+Les fonctionnalites avancees de chiffrement, de steganographie, de watermarking et de fingerprinting restent des objectifs de developpement.
+
+Documentation technique : [Deploiement securise DEV](deployment/wildfly/SECURITY-DEV.md).

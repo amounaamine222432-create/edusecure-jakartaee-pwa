@@ -12,3 +12,13 @@ node_modules/
 
 # Artefacts telecharges depuis GitHub Actions
 /deployment/artifacts/
+
+# Fichiers cryptographiques et secrets WildFly
+*.p12
+*.pfx
+*.jks
+*.keystore
+*.cs
+*.credential-store
+*.env.local
+*.env.production
