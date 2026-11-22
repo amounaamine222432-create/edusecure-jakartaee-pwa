@@ -63,9 +63,12 @@ jobs:
           retention-days: 7
 
   # JOB 2 : Detection des secrets avec Gitleaks
-  gitleaks:
+   gitleaks:
     name: Security - Gitleaks
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
     permissions:
       contents: read
       id-token: write
