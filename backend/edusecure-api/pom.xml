@@ -34,7 +34,19 @@
             <scope>test</scope>
         </dependency>
 
-            <dependency><groupId>tn.supcom.edusecure</groupId><artifactId>edusecure-common</artifactId><version>${project.version}</version></dependency>
+        <dependency>
+            <groupId>tn.supcom.edusecure</groupId>
+            <artifactId>edusecure-common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <!-- Bibliotheque embarquee dans le WAR; son activation exige un
+             fournisseur de cles de production configure explicitement. -->
+        <dependency>
+            <groupId>tn.supcom.edusecure</groupId>
+            <artifactId>edusecure-crypto</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 
 </project>
